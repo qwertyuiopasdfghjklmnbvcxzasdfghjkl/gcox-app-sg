@@ -25,7 +25,6 @@
     "js-cookie": "^2.2.0",
     "js-md5": "^0.7.3",
     "mint-ui": "^2.2.13",
-    "nl.madebymark.share": "~0.1.1",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "qrcode": "^1.3.3",
     "v-tap": "^3.0.3",
