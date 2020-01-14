@@ -15,6 +15,9 @@ const state = {
   version: '1.0.0'
 }
 const getters = {
+  getSiteType(state){
+    return location.hostname === 'gcox.sg'?2:1
+  },
   getLang (state){
     return state.lang
   },
@@ -57,7 +60,7 @@ const actions = {
   },
   setApiToken (context, apiToken) {
     if (apiToken) {
-      JsCookies.set('api_token', apiToken, { expires: 365*100 })
+      JsCookies.set('api_token', apiToken, { expires: 365*1000 })
       localStorage.setItem('isFirstLogin', true)
     } else {
       window.localStorage.removeItem('userInfo')

@@ -31,10 +31,6 @@ cordova build android
 cordova build ios
 ```
 
-
-
-
-
 ### Run your tests
 ```
 npm run test

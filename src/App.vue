@@ -20,6 +20,9 @@
     import cordovaUtils from '@/assets/js/cordovaUtils'
     import marketApi from '@/api/market'
     import walletApi from '@/api/wallet'
+    import select from './views/dialog/selectWeb'
+    import international from './views/dialog/internationalWeb'
+    import internationalApp from './views/dialog/internationalApp'
 
     export default {
         components: {
@@ -27,21 +30,23 @@
             initSlides,
             update
         },
-        data(){
-            return{
+        data() {
+            return {
                 system: 0
             }
         },
         computed: {
-            ...mapGetters(['getApiToken', 'getQuickLoginInfo'])
+            ...mapGetters(['getApiToken', 'getQuickLoginInfo', 'getSiteType']),
         },
         watch: {
             getApiToken(newVal) {
                 this.loadLoginInfo()
                 this.getMarketList()
+                this.showJumpTo2()
             },
         },
         created() {
+            this.showJumpTo()
             //一键注册用户快速登录
             if (!this.getApiToken && this.getQuickLoginInfo) {
                 this.setApiToken(this.getQuickLoginInfo.apiToken)
@@ -72,10 +77,10 @@
             this.loadLoginInfo()
             this.checkDeviceready()
             screen.orientation.lock('portrait');
-            if(window['cordova']){
+            if (window['cordova']) {
                 this.system = 1
                 console.log('我是app首页！')
-            }else{
+            } else {
                 console.log('我是h5首页！')
             }
         },
@@ -86,14 +91,49 @@
         },
         methods: {
             ...mapActions(['setBTCValuation', 'setUSDCNY', 'setNetworkSignal', 'setBtcValues', 'setMarketList', 'setUserWallets', 'setMarketConfig', 'setApiToken', 'setUserInfo', 'setVersion', 'setSysParams']),
-            getSysparams(){
-              marketApi.rateSysparams(res=>{
-                let params = {}
-                for(let item of res){
-                  params[item.code] = item
-                }
-                this.setSysParams(params)
-              })
+
+            showJumpTo() {
+                marketApi.getIpVerify(res => {
+                    if (!res) {
+                        if (window['cordova']) {
+                            console.log('请访问国际站点')
+                            utils.setDialog(internationalApp, {
+                                // 选择哪个站点 select
+                            })
+                        } else {
+                            utils.setDialog(select, {
+                                // 选择哪个站点 select
+                            })
+                        }
+                    }
+                })
+            },
+            showJumpTo2() {
+                marketApi.getKycValidate(res => {
+                    if (!res) {
+                        if (window['cordova']) {
+                            console.log('请访问国际站点')
+                            utils.setDialog(internationalApp, {
+                                // 选择哪个站点 select
+                            })
+                        } else {
+                            utils.setDialog(international, {
+                                // 提示其访问主站（gcox.com）
+                            })
+                        }
+
+                    }
+                })
+            },
+
+            getSysparams() {
+                marketApi.rateSysparams(res => {
+                    let params = {}
+                    for (let item of res) {
+                        params[item.code] = item
+                    }
+                    this.setSysParams(params)
+                })
             },
             getMarketList() {
                 //获取市场列表并初始化BTC币种与其它币种最新交易价格
