@@ -4,8 +4,8 @@
         <h2>{{vm.$t('user.goto_main_site')}}</h2>
         <small>{{vm.$t('user.curr_pos_notsg')}}</small>
         <!--<p>{{vm.$t('user.goto_desc')}}</p>-->
-        <p class="btn next" @click="com()">{{vm.$t('user.gcox_com')}}</p>
-        <p class="btn" @click="sg()">{{vm.$t('user.gcox_sg')}}</p>
+        <p class="btn next" @click="com()">{{vm.$t('shop.continue')}}</p>
+        <p class="btn" @click="sg()">{{vm.$t('user.curr_stay')}}</p>
     </div>
 </template>
 

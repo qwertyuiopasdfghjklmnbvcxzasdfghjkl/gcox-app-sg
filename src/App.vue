@@ -109,6 +109,7 @@
                 })
             },
             showJumpTo2() {
+                console.log('sjpdl')
                 marketApi.getKycValidate(res => {
                     if (!res) {
                         if (window['cordova']) {
@@ -122,7 +123,6 @@
                                 // 提示其访问主站（gcox.com）
                             })
                         }
-
                     }
                 })
             },

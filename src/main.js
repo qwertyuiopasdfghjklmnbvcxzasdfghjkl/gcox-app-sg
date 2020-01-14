@@ -7,6 +7,11 @@ import axios from 'axios'
 import VConsole   from 'vconsole'
 
 import VueI18n from 'vue-i18n' //多语言处理模块
+import langApi from '@/api/language'
+import zhCN from './lang/zh-CN'
+import enCN from './lang/en'
+import kr from './lang/kr'
+
 import vueTap from 'v-tap'
 import Methods from './assets/js/methods'
 
@@ -19,7 +24,7 @@ import VeeValidate from 'vee-validate' // 验证
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.min.css'
 import '@/assets/js/vee-validate'
-import langApi from '@/api/language'
+
 import VueClipboard from 'vue-clipboard2'
 import Config from '@/api/config'
 import './components/dialog'
@@ -64,10 +69,6 @@ Vue.component(numberKeyboard.name, numberKeyboard)
 Vue.component(SubmitButton.name, SubmitButton)
 
 Vue.use(VueClipboard)
-//
-// if(process.env.VUE_APP_CURRENTMODE!=='app'){
-//window.vConsole = new VConsole()
-// }
 
 //全局引入提示函数
 window.Tip = require('@/components/common/tip').default
@@ -83,9 +84,10 @@ let $ajax = axios.create({
 })
 
 Vue.prototype.$ajax = $ajax
-
-let LangEn = JSON.parse(window.localStorage.en || '{}') //英文包
-let LangZhCN = JSON.parse(window.localStorage['zh-CN'] || '{}') //简体中文包
+console.log(enCN,zhCN,kr)
+let LangEn = JSON.parse(window.localStorage.en || JSON.stringify(enCN)) //英文包
+let LangZhCN = JSON.parse(window.localStorage['zh-CN'] || JSON.stringify(zhCN)) //简体中文包
+let LangKr = JSON.parse(window.localStorage['kr'] || JSON.stringify(kr)) //简体中文包
 let lang = window.localStorage.lang || 'en'
 
 let i18n = window.$i18n = new VueI18n({
@@ -93,6 +95,7 @@ let i18n = window.$i18n = new VueI18n({
   messages: {
     'en': LangEn,
     'zh-CN': LangZhCN,
+    'kr': LangKr,
   }
 })
 
