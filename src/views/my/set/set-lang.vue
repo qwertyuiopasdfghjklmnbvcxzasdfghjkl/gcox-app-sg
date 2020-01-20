@@ -29,10 +29,10 @@
                         label: 'English',
                         value: 'en'
                     },
-                    {
-                        label: '한국어',
-                        value: 'kr'
-                    }
+                    // {
+                    //     label: '한국어',
+                    //     value: 'kr'
+                    // }
                 ]
             }
         },
