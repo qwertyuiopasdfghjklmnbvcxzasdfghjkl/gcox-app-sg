@@ -40,17 +40,11 @@
                         </label>
                         <span class="ml10">
               <label for="service" class="ft-c-lightGray">{{$t('public0.agreeService')}} 《<!--我已阅读并同意--></label>
-              <a href="https://gcoxgroup.com/wallet_tnc.html" target="_blank">
-                {{$t('home.home25')}}
-              </a>
+              <router-link :to="{name: 'notice-detail',query:{id: '252892086951477248'}}">{{$t('usercontent.wallet-rule')}}<!--钱包使用条款--></router-link>
               》《
-              <a href="https://gcoxgroup.com/privacy_policy.html" target="_blank">
-                {{$t('home.home26')}}
-              </a>
+              <router-link :to="{name: 'notice-detail',query:{id: '252892490401579008'}}">{{$t('usercontent.use-rule')}}<!--使用条款--></router-link>
               》《
-              <a href="https://gcoxgroup.com/terms_of_use.html" target="_blank">
-                {{$t('home.home27')}}
-              </a>
+              <router-link :to="{name: 'notice-detail',query:{id: '252889472868286464'}}">{{$t('usercontent.foot-policy')}}<!--隐私条款--></router-link>》
               》
             </span>
                     </div>

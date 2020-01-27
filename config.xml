@@ -44,5 +44,5 @@
     </plugin>
     <plugin name="cordova-plugin-appversion" spec="^1.0.0" />
     <plugin name="cordova-plugin-app-update" spec="git+ssh://git@c.koall.io:ko-plugins/cordova-plugin-app-update.git" />
-    <engine name="android" spec="^7.0.0" />
+    <engine name="android" spec="^8.1.0" />
 </widget>
