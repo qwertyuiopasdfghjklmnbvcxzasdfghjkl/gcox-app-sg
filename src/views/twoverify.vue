@@ -101,7 +101,7 @@
                 })
             },
             getInfo() {
-                userApi.userInfo(res => {
+             userApi.userInfo(res => {
                     this.setUserInfo(res);
                 },msg=>{
                     setTimeout(this.getInfo(),1500)
