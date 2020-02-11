@@ -20,21 +20,22 @@
             }
         },
         computed:{
-            ...mapGetters(['getSysParams']),
+            //...mapGetters(['getSysParams']),
         },
         watch: {
+
             timer() {
                 if (this.timer === 0) {
                     clearInterval(this.interval)
                     window.open('https://m-exchange.gcox.com/')
                 }
             },
-            getSysParams(e) {
+          /* getSysParams(e) {
                 let status = e['maintain']['value']
                 if( status === '1'){
                     this.$emit('removeDialog')
                 }
-            }
+            }*/
         },
         created() {
             this.interval = setInterval(() => {

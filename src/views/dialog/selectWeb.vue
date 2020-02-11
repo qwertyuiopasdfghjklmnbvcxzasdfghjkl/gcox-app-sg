@@ -23,15 +23,16 @@
             ...mapGetters(['getSysParams']),
         },
         watch:{
-            getSysParams(e) {
+            /*getSysParams(e) {
+                console.log('隐藏弹框')
                 let status = e['maintain']['value']
                 if( status === '1'){
                     this.$emit('removeDialog')
                 }
-            }
+            }*/
         },
         created() {
-
+            console.log(this.getSysParams)
         },
         methods: {
             sg(){

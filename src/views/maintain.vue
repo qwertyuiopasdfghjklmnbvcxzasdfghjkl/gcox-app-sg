@@ -37,7 +37,8 @@
     padding:0.2rem;
     background: #000;
     img{
-        height: 1rem
+        max-height: 1rem;
+        max-width: 50vw;
     }
 }
     .title{
