@@ -7,6 +7,39 @@ const DOMAIN = config.url
 
 axios.defaults.baseURL = DOMAIN
 
+// 添加请求参数-用户灰度测试
+function getUrlHashParams() {
+  let hash = location.hash
+  if (!hash) {
+    return {}
+  }
+  if (hash.indexOf('?') === -1) {
+    return {}
+  }
+  let ps = hash.substring(hash.indexOf('?') + 1)
+  if (!ps) {
+    return {}
+  }
+  ps = ps.split('&')
+  let param = {}
+  for (let i = 0; i < ps.length; i++) {
+    let p = ps[i].split('=')
+    if (p[0]) {
+      param[p[0]] = p[1] || ''
+    }
+  }
+  return param
+}
+
+let search = getUrlHashParams().izone || null
+console.log(search)
+
+let parmes = ''
+
+if (search) {
+  parmes = '?izone=' + search
+}
+
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
   var apiToken = JsCookies.get('api_token')
@@ -63,7 +96,7 @@ const get = function (url, data, success, error) {
     success = data
     data = {}
   }
-  axios.get(url, {
+  axios.get(url + parmes, {
     params: data
   }).then((res) => {
     if (!res) { return }
@@ -81,7 +114,7 @@ const post = function (url, data, success, error) {
     success = data
     data = {}
   }
-  axios.post(url, data).then((res) => {
+  axios.post(url + parmes, data).then((res) => {
     if (!res) { return }
     success && success(res.data)
   }).catch((res) => {
@@ -97,7 +130,7 @@ const del = function (url, data, success, error) {
     success = data
     data = {}
   }
-  axios.delete(url, {
+  axios.delete(url + parmes, {
     data: data
   }).then((res) => {
     if (!res) { return }
@@ -115,7 +148,7 @@ const put = function (url, data, success, error) {
     success = data
     data = {}
   }
-  axios.put(url, data).then((res) => {
+  axios.put(url + parmes, data).then((res) => {
     if (!res) { return }
     success && success(res.data)
   }).catch((res) => {
@@ -131,7 +164,7 @@ const postForm = function (url, data, success, error) {
     success = data
     data = {}
   }
-  axios.post(url, data).then((res) => {
+  axios.post(url + parmes, data).then((res) => {
     if (!res) { return }
     success && success(res.data)
   }).catch((res) => {
