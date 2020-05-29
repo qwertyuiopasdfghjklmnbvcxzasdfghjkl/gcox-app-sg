@@ -27,7 +27,7 @@
                 <p>{{$t('exchange.exchange_amount')}}<!--数量-->
                     <span>{{toFixed(data.finishedAmount)|number}} / {{toFixed(data.totalAmount)|number}}</span>
                 </p>
-                <p>{{$t('exchange.exchange_price')}}<!--价格--> <span>{{toFixed(data.price)|number}}</span></p>
+                <p>{{$t('exchange.exchange_price')}}<!--价格--> <span>{{data.price==-1?$t('exchange.exchange_market_price'):util.removeEndZero(toFixed(data.price))}}</span></p>
             </div>
             <div class="btn">
                 <span v-if="form">{{getStatue(data)}}</span>
@@ -42,6 +42,7 @@
 <script>
 
     import numUtils from '@/assets/js/numberUtils'
+    import utils from '../../../assets/js/utils'
 
     export default {
         props: ['data','index','form'],
@@ -49,7 +50,8 @@
             return {
                 rightRotate: 45,
                 value: 0,
-                fixedNumber: 8
+                fixedNumber: 8,
+                util: utils
             }
         },
         computed: {

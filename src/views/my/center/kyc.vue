@@ -17,7 +17,7 @@
                     <span>{{$t('home.kyc-p')}}</span>
                 </div>
                 <div v-if="getUserInfo.kycState === -2 || getUserInfo.kycState === -3">
-                    <p class="f-c-danger">{{$t('home.re-kyc')}}</p>
+                    <p class="f-c-danger">{{$t('usercontent.user44')}} (Reject Reason: {{getUserInfo.kycRejectReason}})</p>
                     <span @click="submitKYC()" style="cursor: pointer" v-html="$t('home.re-kyc-p')"></span>
                 </div>
             </div>
