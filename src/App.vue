@@ -36,17 +36,30 @@
             }
         },
         computed: {
-            ...mapGetters(['getApiToken', 'getQuickLoginInfo', 'getSiteType']),
+            ...mapGetters(['getApiToken', 'getQuickLoginInfo', 'getSiteType', 'getSysParams', 'getUserInfo']),
         },
         watch: {
             getApiToken(newVal) {
                 this.loadLoginInfo()
                 this.getMarketList()
-                this.showJumpTo2()
             },
+            getSysParams(e) {
+                console.log(e)
+                let status = e['maintain'] && e['maintain']['value'] || '0'
+                if( status === '1'){
+                    console.log('go maintain')
+                    this.$router.push({name: 'maintain'})
+                }else{
+                    this.showJumpTo()
+                }
+            },
+            getUserInfo(){
+                if(this.getUserInfo.kycState === 1){
+                    this.showJumpTo2()
+                }
+            }
         },
         created() {
-            this.showJumpTo()
             //一键注册用户快速登录
             if (!this.getApiToken && this.getQuickLoginInfo) {
                 this.setApiToken(this.getQuickLoginInfo.apiToken)
@@ -71,7 +84,7 @@
                     }
                 }
             })
-            this.getSysparams()
+            this.getSysparam()
             this.getBtcPrice()
             this.getMarketList()
             this.loadLoginInfo()
@@ -127,7 +140,7 @@
                 })
             },
 
-            getSysparams() {
+            getSysparam() {
                 marketApi.rateSysparams(res => {
                     let params = {}
                     for (let item of res) {

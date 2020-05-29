@@ -8,6 +8,7 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
     export default {
         name: "internationalWeb",
         data() {
@@ -18,13 +19,23 @@
                 interval: null
             }
         },
+        computed:{
+            //...mapGetters(['getSysParams']),
+        },
         watch: {
+
             timer() {
                 if (this.timer === 0) {
                     clearInterval(this.interval)
                     window.open('https://m-exchange.gcox.com/')
                 }
-            }
+            },
+          /* getSysParams(e) {
+                let status = e['maintain']['value']
+                if( status === '1'){
+                    this.$emit('removeDialog')
+                }
+            }*/
         },
         created() {
             this.interval = setInterval(() => {

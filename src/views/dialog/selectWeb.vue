@@ -10,6 +10,7 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
     export default {
         name: "selectWeb",
         data() {
@@ -18,8 +19,20 @@
                 vm: vm
             }
         },
+        computed:{
+            ...mapGetters(['getSysParams']),
+        },
+        watch:{
+            /*getSysParams(e) {
+                console.log('隐藏弹框')
+                let status = e['maintain']['value']
+                if( status === '1'){
+                    this.$emit('removeDialog')
+                }
+            }*/
+        },
         created() {
-
+            console.log(this.getSysParams)
         },
         methods: {
             sg(){
