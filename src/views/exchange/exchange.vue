@@ -131,18 +131,18 @@
                 let symbol = this.$route.params.market
                 if (symbol) {
                     symbol = symbol.split('_')[1]
-                    return symbol ? symbol : 'BTC'
+                    return symbol ? symbol : 'USDT'
                 } else {
-                    return 'BTC'
+                    return 'USDT'
                 }
             },
             currentSymbol() {
                 let symbol = this.$route.params.market
                 if (symbol) {
                     symbol = symbol.split('_')[0]
-                    return symbol ? symbol : 'USDT'
+                    return symbol ? symbol : 'BTC'
                 } else {
-                    return 'USDT'
+                    return 'BTC'
                 }
             },
             symbol() {
