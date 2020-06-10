@@ -140,9 +140,9 @@
                 let symbol = this.$route.params.market
                 if (symbol) {
                     symbol = symbol.split('_')[0]
-                    return symbol ? symbol : 'ETH'
+                    return symbol ? symbol : 'USDT'
                 } else {
-                    return 'ETH'
+                    return 'USDT'
                 }
             },
             symbol() {
