@@ -50,12 +50,12 @@
                     console.log('go maintain')
                     this.$router.push({name: 'maintain'})
                 }else{
-                    this.showJumpTo()
+                    // this.showJumpTo()
                 }
             },
             getUserInfo(){
                 if(this.getUserInfo.kycState === 1){
-                    this.showJumpTo2()
+                    // this.showJumpTo2()
                 }
             }
         },

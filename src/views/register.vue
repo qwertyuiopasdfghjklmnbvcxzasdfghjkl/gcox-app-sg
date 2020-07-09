@@ -39,13 +39,14 @@
                             <i type="checkbox" :class="{'active':checked}"></i>
                         </label>
                         <span class="ml10">
-              <label for="service" class="ft-c-lightGray">{{$t('public0.agreeService')}} 《<!--我已阅读并同意--></label>
-              <router-link :to="{name: 'notice-detail',query:{id: '252892086951477248'}}">{{$t('usercontent.wallet-rule')}}<!--钱包使用条款--></router-link>
-              》《
-              <router-link :to="{name: 'notice-detail',query:{id: '252892490401579008'}}">{{$t('usercontent.use-rule')}}<!--使用条款--></router-link>
-              》《
-              <router-link :to="{name: 'notice-detail',query:{id: '252889472868286464'}}">{{$t('usercontent.foot-policy')}}<!--隐私条款--></router-link>》
-              》
+              <label for="service" class="ft-c-lightGray">{{$t('public0.agreeService')}} <!--我已阅读并同意--></label>
+              《<router-link :to="{name: 'notice-detail',query:{id: '252892086951477248'}}">{{$t('usercontent.wallet-rule')}}<!--钱包使用条款--></router-link>》
+
+              《<router-link :to="{name: 'notice-detail',query:{id: '252892490401579008'}}">{{$t('usercontent.use-rule')}}<!--使用条款--></router-link>》
+
+              《<router-link :to="{name: 'notice-detail',query:{id: '252889472868286464'}}">{{$t('usercontent.foot-policy')}}<!--隐私条款--></router-link>》
+
+              《<router-link :to="{name: 'notice-detail',query:{id: '309035565162954752'}}">{{$t('usercontent.risk_warning')}}<!--隐私条款--></router-link>》
             </span>
                     </div>
 
